@@ -1,0 +1,11 @@
+1 - unidade
+2 - produto
+3 - cliente
+4 - fornecedor
+5 - entrada
+6 - saida
+7 - Gerenciamento de usuário e perfil
+
+
+pessoa tem id, nome, email, telefone
+Users, clients e suppliers extends person
