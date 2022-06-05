@@ -1,10 +1,10 @@
-import { request } from 'http';
-import { Request, response, Response } from 'express';
+import { Request, Response } from 'express';
+
+import CreateProductService from '../services/CreateProductService';
+import DeleteProductService from '../services/DeleteProductService';
 import ListProductService from '../services/ListProductService';
 import ShowProductService from '../services/ShowProductService';
-import CreateProductService from '../services/CreateProductService';
 import UpdateProductService from '../services/UpdateProductService';
-import DeleteProductService from '../services/DeleteProductService';
 
 class ProductController {
   public async index(request: Request, response: Response): Promise<Response> {
