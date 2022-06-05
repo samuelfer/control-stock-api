@@ -1,8 +1,8 @@
 import AppError from '@shared/errors/AppError';
-import { ProductRepository } from './../repositories/ProductRepository';
-import { IRequestProduct } from '../interface/IRequestProduct';
+import { ProductRepository } from '../typeorm/repositories/ProductRepository';
+import { IRequestProduct } from '../typeorm/interface/IRequestProduct';
 import { getCustomRepository } from 'typeorm';
-import Product from '../entities/Product';
+import Product from '../typeorm/entities/Product';
 
 class CreateProductService {
   public async execute({
