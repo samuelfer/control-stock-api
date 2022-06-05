@@ -7,6 +7,7 @@ import UserRepository from '../typeorm/repositories/UserRepository';
 class CreateUserService {
   public async execute({ name, email, password }: IRequestUser): Promise<User> {
     const userRepository = getCustomRepository(UserRepository);
+    console.log(userRepository);
     const emailExists = await userRepository.findByEmail(email);
     const userExists = await userRepository.findByName(name);
 

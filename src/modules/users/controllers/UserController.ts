@@ -7,6 +7,7 @@ class UserController {
     const listUsers = new ListUserService();
 
     const users = await listUsers.execute();
+    console.log(users);
 
     return response.json(users);
   }
@@ -21,6 +22,7 @@ class UserController {
       email,
       password,
     });
+    console.log(user);
 
     return response.json(user);
   }
