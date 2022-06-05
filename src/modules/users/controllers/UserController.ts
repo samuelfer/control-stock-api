@@ -22,7 +22,6 @@ class UserController {
       email,
       password,
     });
-    console.log(user);
 
     return response.json(user);
   }
