@@ -3,6 +3,12 @@ import AppError from '@shared/errors/AppError';
 import { verify } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 
+interface TokenPayload {
+  iat: number;
+  exp: number;
+  sub: string;
+}
+
 export default function isAuthenticated(
   request: Request,
   response: Response,
@@ -17,7 +23,15 @@ export default function isAuthenticated(
   const [, token] = authHeader.split(' ');
 
   try {
-    const decodeToken = verify(token, authConfig.jwt.secret);
+    const decodedToken = verify(token, authConfig.jwt.secret);
+
+    //Desestrutura para pegar o id do usuario e enviar nas requests
+    const { sub } = decodedToken as TokenPayload;
+
+    //Add propriedade user ao request do express
+    request.user = {
+      id: sub,
+    };
 
     return next();
   } catch {

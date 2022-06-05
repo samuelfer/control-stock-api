@@ -8,7 +8,6 @@ class ListUserService {
     const userRepository = getCustomRepository(UserRepository);
 
     const users = await userRepository.find();
-    console.log(users);
 
     return users;
   }
