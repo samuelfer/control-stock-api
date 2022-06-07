@@ -4,6 +4,7 @@ import CreateCustomerService from '../services/CreateCustomerService';
 import DeleteCustomerService from '../services/DeleteCustomerService';
 import ListCustomerService from '../services/ListCustomerService';
 import ShowCustomerService from '../services/ShowCustomerService';
+import UpdateCustomerService from '../services/UpdateCustomerService';
 
 class CustomerController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -30,6 +31,21 @@ class CustomerController {
     const createCustomer = new CreateCustomerService();
 
     const customer = await createCustomer.execute({
+      name,
+      email,
+    });
+
+    return response.json(customer);
+  }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+    const { name, email } = request.body;
+
+    const updateCustomer = new UpdateCustomerService();
+
+    const customer = await updateCustomer.execute({
+      id,
       name,
       email,
     });
