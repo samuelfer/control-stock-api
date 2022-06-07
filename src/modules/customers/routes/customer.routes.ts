@@ -1,9 +1,12 @@
+import isAuthenticated from '@shared/http/middlewares/isAuthenticated';
 import { celebrate, Joi, Segments } from 'celebrate';
 import { Router } from 'express';
 import CustomerController from '../controllers/CustomerController';
 
 const customerRouter = Router();
 const customerController = new CustomerController();
+
+customerRouter.use(isAuthenticated);
 
 customerRouter.get('/', customerController.index);
 
@@ -22,7 +25,7 @@ customerRouter.post(
   celebrate({
     [Segments.BODY]: {
       name: Joi.string().required(),
-      email: Joi.number().precision(2).required(),
+      email: Joi.string().email().required(),
     },
   }),
   customerController.create,
@@ -36,7 +39,7 @@ customerRouter.put(
     },
     [Segments.BODY]: {
       name: Joi.string().required(),
-      email: Joi.number().precision(2).required(),
+      email: Joi.string().email().required(),
     },
   }),
   customerController.update,
