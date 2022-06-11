@@ -1,6 +1,6 @@
-import { IRequestProduct } from '../typeorm/interface/IRequestProduct';
+import { IRequestProduct } from '../typeorm/interfaces/IRequestProduct';
 import AppError from '@shared/errors/AppError';
-import { ProductRepository } from '../typeorm/repositories/ProductRepository';
+import ProductRepository from '../typeorm/repositories/ProductRepository';
 import { getCustomRepository } from 'typeorm';
 import Product from '../typeorm/entities/Product';
 

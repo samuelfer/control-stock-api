@@ -1,8 +1,7 @@
-import { response } from 'express';
-import { IRequestOrder } from './../interface/IRequestOrder';
 import { EntityRepository, Repository } from 'typeorm';
 
 import Order from '../entities/Order';
+import { IRequestOrder } from '../interfaces/IRequestOrder';
 
 @EntityRepository(Order)
 class OrderRepository extends Repository<Order> {
